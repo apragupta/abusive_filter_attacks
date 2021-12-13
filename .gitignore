@@ -112,3 +112,12 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+preprocessed/
+model_new/model_att=encoded_checkpoints
+model_new/model_noatt_checkpoints
+ark-tweet-nlp-0.3.2.jar
+dump_2/
+model_new/
+model_new_2
+.idea
