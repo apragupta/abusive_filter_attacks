@@ -29,8 +29,8 @@ tf.flags.DEFINE_integer("embedding_dim", 300, "Dimensionality of character embed
 tf.flags.DEFINE_integer("pos_vocab_size", 26, "Vocab size of POS tags")
 tf.flags.DEFINE_integer("pos_embedding_dim", 25, "Dimensionality of pos tag embedding (default: 20)")
 tf.flags.DEFINE_float("dropout_keep_prob", 0.99, "Dropout keep probability (default: 0.5)")
-tf.flags.DEFINE_float("attention_lambda", 0.2, "Supervised attention lambda (default: 0.05)")
-tf.flags.DEFINE_string("attention_loss_type", "encoded", "loss function of attention")
+tf.flags.DEFINE_float("attention_lambda", 0.0, "Supervised attention lambda (default: 0.05)")
+tf.flags.DEFINE_string("attention_loss_type", "none", "loss function of attention")
 tf.flags.DEFINE_float("l2_reg_lambda", 0.02, "L2 regularizaion lambda (default: 0.05)")
 tf.flags.DEFINE_integer("hidden_size", 300, "Dimensionality of RNN cell (default: 300)")
 tf.flags.DEFINE_integer("pos_hidden_size", 25, "Dimensionality of POS-RNN cell")
@@ -55,13 +55,13 @@ print("")
 """
 
 # -----------------------------  load data  -----------------------------
-vocabulary, pos_vocabulary, init_embed = data_helpers.loadVocabEmb(r'../preprocessing/dump_2')
+vocabulary, pos_vocabulary, init_embed = data_helpers.loadVocabEmb(r'../dump_2')
 
 
 pos_vocab_size = len(pos_vocabulary)
 x_train, length_train, attention_train, pos_train, pos_length_train, y_train, \
          x_dev, length_dev, attention_dev, pos_dev, pos_length_dev, y_dev \
-         = data_helpers.loadTrainData(r'../preprocessing/dump_2', r'../preprocessed/try_2')
+         = data_helpers.loadTrainData(r'../dump_2', r'../preprocessed/try_2')
 
 # -------------------------- model training --------------------------
 with tf.Graph().as_default():

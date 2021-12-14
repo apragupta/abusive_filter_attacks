@@ -156,17 +156,18 @@ def colorize(words, color_array):
         color = matplotlib.colors.rgb2hex(cmap(color)[:3])
         colored_string += template.format(color, '&nbsp' + word + '&nbsp')
     return colored_string
-def plot_attention(tokenized_comment, attention_weights, seperate = False):
+def plot_attention(tokenized_comment, attention_weights):
     len_comment = len(tokenized_comment)
 
-    if seperate:
-        print("====FORWARD ATTENTION===")
-        s = colorize(tokenized_comment, attention_weights[0:50])
-        display(HTML(s))
-        print("====BACKWORD ATTENTION===")
-        s = colorize(tokenized_comment, attention_weights[50:])
-        display(HTML(s))
-    else:
-        s = colorize(tokenized_comment, attention_weights[0:50]+attention_weights[50:])
-        display(HTML(s))
+    # if seperate:
+    #     print("====FORWARD ATTENTION===")
+    #     s = colorize(tokenized_comment, attention_weights[0:50])
+    #     display(HTML(s))
+    #     print("====BACKWORD ATTENTION===")
+    #     s = colorize(tokenized_comment, attention_weights[50:])
+    #     display(HTML(s))
+    # else:
+
+    s = colorize(tokenized_comment, attention_weights)
+    display(HTML(s))
 
